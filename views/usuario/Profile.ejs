@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil - GABUDE Imóveis</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #0b3d91;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 420px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card h1 {
+            font-size: 28px;
+            color: #0b3d91;
+            margin-bottom: 20px;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin: 12px 0;
+            color: #333;
+        }
+
+        .profile-actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #0b3d91;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #072f6b;
+        }
+
+        .logout {
+            background: #c0392b;
+        }
+
+        .logout:hover {
+            background: #992d22;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .menu-toggle div {
+            height: 3px;
+            background: white;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+
+        nav {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            padding: 15px;
+            z-index: 999;
+        }
+
+        nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: #0b3d91;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #f0f4ff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">GABUDE Imóveis</div>
+        <div class="menu-toggle" onmouseenter="showMenu()" onmouseleave="hideMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+            <nav id="menu" onmouseenter="keepMenu()" onmouseleave="hideMenu()">
+                <a href="/menu">Início</a>
+                <a href="/whoWeAre">Quem Somos</a>
+                <a href="/UsersList">Lista de Usuários</a>
+                <a href="/Profile">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="main-content">
+        <div class="profile-card">
+            <h1>Perfil do Usuário</h1>
+            <p><strong>Email:</strong>
+                <%= usuarioLogado.email %>
+            </p>
+            <p><strong>Senha: </strong>
+                <%= usuarioLogado.senha%>
+            </p>
+            <p><strong>Tipo de Conta:</strong>
+                <%= usuarioLogado.adm ? 'Administrador' : 'Usuário comum' %>
+            </p>
+
+            <div class="profile-actions">
+                <a href="/abreEdtUser/<%= usuario._id %>" class="btn">Editar Perfil</a>
+                <a href="/login" class="btn logout">Sair</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menu = document.getElementById('menu');
+        let hovering = false;
+
+        function showMenu() {
+            hovering = true;
+            menu.style.display = 'flex';
+        }
+
+        function hideMenu() {
+            hovering = false;
+            setTimeout(() => {
+                if (!hovering) {
+                    menu.style.display = 'none';
+                }
+            }, 300);
+        }
+
+        function keepMenu() {
+            hovering = true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quem Somos - GABUDE Imóveis</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #0b3d91;
+            color: white;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            width: 30px;
+        }
+
+        .menu-toggle div {
+            height: 3px;
+            background: white;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+
+        nav {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            padding: 15px;
+            z-index: 999;
+        }
+
+        nav a {
+            padding: 10px;
+            text-decoration: none;
+            color: #0b3d91;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #f0f4ff;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #0b3d91;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        .mission-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">GABUDE Imóveis</div>
+        <div class="menu-toggle" onmouseenter="showMenu()" onmouseleave="hideMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+            <nav id="menu" onmouseenter="keepMenu()" onmouseleave="hideMenu()">
+                <a href="/menu">Início</a>
+                <a href="/whoWeAre">Quem Somos</a>
+                <a href="/Userslist">Lista de Usuários</a>
+                <a href="/Profile">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Quem Somos</h1>
+        <p>
+            Fundada em 2015, a <strong>GABUDE Imóveis</strong> nasceu com a missão de transformar o modo como as pessoas
+            se conectam com seus lares dos sonhos.
+            Ao longo dos anos, nos tornamos referência em soluções imobiliárias modernas, eficientes e seguras, sempre
+            priorizando a transparência e a satisfação dos nossos clientes.
+        </p>
+
+        <div class="mission-box">
+            <h2 style="color:#0b3d91;">Nossa Missão</h2>
+            <p>
+                Nossa missão é oferecer uma experiência inovadora na compra, venda e locação de imóveis, unindo
+                tecnologia e atendimento humano de excelência.
+                Queremos mais do que vender propriedades — queremos realizar sonhos.
+            </p>
+        </div>
+
+        <div class="mission-box">
+            <h2 style="color:#0b3d91;">Visão e Valores</h2>
+            <p>
+                Ser reconhecida como a imobiliária mais confiável e moderna da região. Valorizamos ética, transparência,
+                comprometimento e, principalmente, o respeito às pessoas.
+                Na GABUDE, cada imóvel representa uma nova história — e temos orgulho em fazer parte disso.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 GABUDE Imóveis. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        const menu = document.getElementById('menu');
+        let hovering = false;
+
+        function showMenu() {
+            hovering = true;
+            menu.style.display = 'flex';
+        }
+
+        function hideMenu() {
+            hovering = false;
+            setTimeout(() => {
+                if (!hovering) {
+                    menu.style.display = 'none';
+                }
+            }, 300);
+        }
+
+        function keepMenu() {
+            hovering = true;
+        }
+    </script>
+</body>
+
+</html>
